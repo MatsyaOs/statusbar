@@ -1098,7 +1098,7 @@ ControlCenterDialog {
                                                                                                                 width: rootItem.iconSize
                                                                                                                 height: width
                                                                                                                 sourceSize: Qt.size(width, height)
-                                                                                                                source: "qrc:/images/" + (rootItem.darkMode ? "dark/": "light/") + "avatar.svg"
+                                                                                                                source: "qrc:/images/" + (rootItem.darkMode ? "dark/": "light/") + "system-shutdown-symbolic.svg"
                                                                                                                 asynchronous: true
                                                                                                                 antialiasing: true
                                                                                                                 smooth: false
