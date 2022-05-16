@@ -39,7 +39,7 @@ StatusBar::StatusBar(QQuickView *parent)
     : QQuickView(parent)
     , m_acticity(new Activity)
 {
-    QSettings settings("cutefishos", "locale");
+    QSettings settings("matsyaos", "locale");
     m_twentyFourTime = settings.value("twentyFour", false).toBool();
 
     setFlags(Qt::FramelessWindowHint | Qt::WindowDoesNotAcceptFocus);

@@ -16,14 +16,14 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
- 
+
 import QtQuick 2.12
 import QtQuick.Controls 2.12
 import QtQuick.Layouts 1.12
 import QtGraphicalEffects 1.0
 
-import FishUI 1.0 as FishUI
-import Cutefish.StatusBar 1.0
+import MatsyaUI 1.0 as MatsyaUI
+import Matsya.StatusBar 1.0
 
 Item {
     id: control
@@ -101,7 +101,7 @@ Item {
             if (containsMouse && control.popupText !== "") {
                 popupTips.popupText = control.popupText
                 popupTips.position = Qt.point(control.mapToGlobal(0, 0).x + (control.width / 2 - popupTips.width / 2),
-                                              control.height + FishUI.Units.smallSpacing)
+                                              control.height + MatsyaUI.Units.smallSpacing)
                 popupTips.show()
             } else {
                 popupTips.hide()
@@ -115,7 +115,7 @@ Item {
 
     Rectangle {
         id: _bgRect
-        radius: FishUI.Theme.smallRadius
+        radius: MatsyaUI.Theme.smallRadius
 
         state: "hidden"
         states: [

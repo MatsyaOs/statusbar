@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2021 - 2022 CutefishOS Team.
+ * Copyright (C) 2021 - 2022 MatsyaOS Team.
  *
  * Author:     Kate Leet <kate@cutefishos.com>
  *
@@ -23,17 +23,17 @@ import QtQuick.Window 2.12
 import QtQuick.Layouts 1.12
 import QtGraphicalEffects 1.0
 
-import Cutefish.Accounts 1.0 as Accounts
-import Cutefish.Bluez 1.0 as Bluez
-import Cutefish.StatusBar 1.0
-import Cutefish.Audio 1.0
-import FishUI 1.0 as FishUI
+import Matsya.Accounts 1.0 as Accounts
+import Matsya.Bluez 1.0 as Bluez
+import Matsya.StatusBar 1.0
+import Matsya.Audio 1.0
+import MatsyaUI 1.0 as MatsyaUI
 
 ControlCenterDialog {
     id: control
 
-    width: _mainLayout.implicitWidth + FishUI.Units.largeSpacing * 3
-    height: _mainLayout.implicitHeight + FishUI.Units.largeSpacing * 3
+    width: _mainLayout.implicitWidth + MatsyaUI.Units.largeSpacing * 3
+    height: _mainLayout.implicitHeight + MatsyaUI.Units.largeSpacing * 3
 
     onWidthChanged: adjustCorrectLocation()
     onHeightChanged: adjustCorrectLocation()
@@ -41,8 +41,7 @@ ControlCenterDialog {
 
     property point position: Qt.point(0, 0)
     property var margin: 4 * Screen.devicePixelRatio
-    property var borderColor: windowHelper.compositing ? FishUI.Theme.darkMode ? Qt.rgba(255, 255, 255, 0.3)
-                                                                  : Qt.rgba(0, 0, 0, 0.2) : FishUI.Theme.darkMode ? Qt.rgba(255, 255, 255, 0.15)
+    property var borderColor: windowHelper.compositing ? MatsyaUI.Theme.darkMode ? Qt.rgba(255, 255, 255, 0.3)
+                                                                  : Qt.rgba(0, 0, 0, 0.2) : MatsyaUI.Theme.darkMode ? Qt.rgba(255, 255, 255, 0.15)
                                                                                                                   : Qt.rgba(0, 0, 0, 0.15)
 }
-

@@ -21,8 +21,8 @@ import QtQuick 2.12
 import QtQuick.Layouts 1.12
 import QtQuick.Controls 2.12
 import QtGraphicalEffects 1.0
-import FishUI 1.0 as FishUI
-import Cutefish.Mpris 1.0
+import MatsyaUI 1.0 as MatsyaUI
+import Matsya.Mpris 1.0
 
 Item {
     id: control
@@ -60,9 +60,9 @@ Item {
 
     Rectangle {
         anchors.fill: parent
-        color: "white"//FishUI.Theme.darkMode ? "#AEAEAE" : "white"
-        radius: FishUI.Theme.bigRadius
-        opacity: FishUI.Theme.darkMode ? 0.2 : 0.7//0.8
+        color: "white"//MatsyaUI.Theme.darkMode ? "#AEAEAE" : "white"
+        radius: MatsyaUI.Theme.bigRadius
+        opacity: MatsyaUI.Theme.darkMode ? 0.2 : 0.7//0.8
     }
     GridLayout {
         anchors.fill: parent
@@ -94,7 +94,7 @@ Item {
 
                     Rectangle {
                         anchors.fill: parent
-                        radius: FishUI.Theme.bigRadius
+                        radius: MatsyaUI.Theme.bigRadius
                     }
                 }
             }
@@ -116,7 +116,7 @@ Item {
 
                     Rectangle {
                         anchors.fill: parent
-                        radius: FishUI.Theme.bigRadius
+                        radius: MatsyaUI.Theme.bigRadius
                     }
                 }
             }
@@ -158,12 +158,12 @@ Item {
             RowLayout {
                 id: _buttonsLayout
                 anchors.fill: parent
-                spacing: FishUI.Units.smallSpacing
+                spacing: MatsyaUI.Units.smallSpacing
 
                 IconButton {
                     width: 30
                     height: 30
-                    source: "qrc:/images/" + (FishUI.Theme.darkMode ? "dark" : "light") + "/media-skip-backward-symbolic.svg"
+                    source: "qrc:/images/" + (MatsyaUI.Theme.darkMode ? "dark" : "light") + "/media-skip-backward-symbolic.svg"
                     onLeftButtonClicked: if (mprisManager.canGoPrevious) mprisManager.previous()
                     visible: mprisManager.canGoPrevious
                     Layout.alignment: Qt.AlignRight
@@ -172,8 +172,8 @@ Item {
                 IconButton {
                     width: 30
                     height: 30
-                    source: control.isPlaying ? "qrc:/images/" + (FishUI.Theme.darkMode ? "dark" : "light") + "/media-playback-pause-symbolic.svg"
-                                              : "qrc:/images/" + (FishUI.Theme.darkMode ? "dark" : "light") + "/media-playback-start-symbolic.svg"
+                    source: control.isPlaying ? "qrc:/images/" + (MatsyaUI.Theme.darkMode ? "dark" : "light") + "/media-playback-pause-symbolic.svg"
+                                              : "qrc:/images/" + (MatsyaUI.Theme.darkMode ? "dark" : "light") + "/media-playback-start-symbolic.svg"
                     Layout.alignment: Qt.AlignRight
                     visible: mprisManager.canPause || mprisManager.canPlay
                     onLeftButtonClicked:
@@ -185,7 +185,7 @@ Item {
                 IconButton {
                     width: 30
                     height: 30
-                    source: "qrc:/images/" + (FishUI.Theme.darkMode ? "dark" : "light") + "/media-skip-forward-symbolic.svg"
+                    source: "qrc:/images/" + (MatsyaUI.Theme.darkMode ? "dark" : "light") + "/media-skip-forward-symbolic.svg"
                     Layout.alignment: Qt.AlignRight
                     visible: mprisManager.canGoNext
                     onLeftButtonClicked: if (mprisManager.canGoNext) mprisManager.next()

@@ -91,18 +91,18 @@ set_source_files_properties(src/libdbusmenuqt/com.canonical.dbusmenu.xml PROPERT
 ## appmenu
 qt5_add_dbus_adaptor(appmenu_SRCS src/appmenu/com.canonical.AppMenu.Registrar.xml
     src/appmenu/menuimporter.h MenuImporter menuimporteradaptor MenuImporterAdaptor)
-qt5_add_dbus_adaptor(appmenu_SRCS src/appmenu/com.cutefish.cappmenu.xml
+qt5_add_dbus_adaptor(appmenu_SRCS src/appmenu/com.matsya.cappmenu.xml
     src/appmenu/appmenudbus.h AppmenuDBus appmenuadaptor AppmenuAdaptor)
 
 ## statusbar dbus
 qt5_add_dbus_adaptor(DBUS_SOURCES
-                     src/com.cutefish.Statusbar.xml
+                     src/com.matsya.Statusbar.xml
                      src/statusbar.h StatusBar)
 
-add_executable(cutefish-statusbar ${SRCS} ${appmenu_SRCS} ${DBUS_SOURCES})
+add_executable(matsya-statusbar ${SRCS} ${appmenu_SRCS} ${DBUS_SOURCES})
 
-target_include_directories(cutefish-statusbar PUBLIC ${XCB_LIBS_INCLUDE_DIRS})
-target_link_libraries(cutefish-statusbar
+target_include_directories(matsya-statusbar PUBLIC ${XCB_LIBS_INCLUDE_DIRS})
+target_link_libraries(matsya-statusbar
   PRIVATE
   Qt5::Core
   Qt5::Widgets
@@ -118,7 +118,7 @@ target_link_libraries(cutefish-statusbar
 file(GLOB TS_FILES translations/*.ts)
 qt5_create_translation(QM_FILES ${TS_FILES})
 add_custom_target(translations DEPENDS ${QM_FILES} SOURCES ${TS_FILES})
-add_dependencies(cutefish-statusbar translations)
+add_dependencies(matsya-statusbar translations)
 
-install(TARGETS cutefish-statusbar RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR})
-install(FILES ${QM_FILES} DESTINATION /usr/share/cutefish-statusbar/translations)
+install(TARGETS matsya-statusbar RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR})
+install(FILES ${QM_FILES} DESTINATION /usr/share/matsya-statusbar/translations)

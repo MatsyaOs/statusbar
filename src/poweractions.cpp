@@ -23,9 +23,9 @@
 #include <QApplication>
 #include <QProcess>
 
-const static QString s_dbusName = "com.cutefish.Session";
+const static QString s_dbusName = "com.matsya.Session";
 const static QString s_pathName = "/Session";
-const static QString s_interfaceName = "com.cutefish.Session";
+const static QString s_interfaceName = "com.matsya.Session";
 
 PowerActions::PowerActions(QObject *parent)
     : QObject(parent)
@@ -59,7 +59,7 @@ void PowerActions::reboot()
 
 void PowerActions::lockScreen()
 {
-    QProcess::startDetached("cutefish-screenlocker", QStringList());
+    QProcess::startDetached("matsya-screenlocker", QStringList());
 }
 
 void PowerActions::suspend()

@@ -1,7 +1,7 @@
 /*
-* Copyright (C) 2021 CutefishOS Team.
+* Copyright (C) 2021 MatsyaOS Team.
 *
-* Author: Reion Wong <aj@cutefishos.com>
+* Author: Reion Wong <aj@matsyaos.com>
 *
 * This program is free software: you can redistribute it and/or modify
 * it under the terms of the GNU General Public License as published by
@@ -23,34 +23,34 @@ import QtQuick.Window 2.12
 import QtQuick.Layouts 1.12
 import QtGraphicalEffects 1.0
 
-import Cutefish.Accounts 1.0 as Accounts
-import Cutefish.Bluez 1.0 as Bluez
-import Cutefish.StatusBar 1.0
-import Cutefish.Audio 1.0
-import FishUI 1.0 as FishUI
-import Cutefish.NetworkManagement 1.0 as NM
-import Cutefish.Mpris 1.0
-// import Cutefish.Settings 1.0
+import Matsya.Accounts 1.0 as Accounts
+import Matsya.Bluez 1.0 as Bluez
+import Matsya.StatusBar 1.0
+import Matsya.Audio 1.0
+import MatsyaUI 1.0 as MatsyaUI
+import Matsya.NetworkManagement 1.0 as NM
+import Matsya.Mpris 1.0
+// import Matsya.Settings 1.0
 import "../"
 ControlCenterDialog {
     id: control
     // width: 450
     width: 320
-    height: _mainLayout.implicitHeight + FishUI.Units.largeSpacing * 2
+    height: _mainLayout.implicitHeight + MatsyaUI.Units.largeSpacing * 2
     property bool checked: false
     property var margin: 4 * Screen.devicePixelRatio
     property point position: Qt.point(0, 0)
     property var defaultSink: paSinkModel.defaultSink
     property var pBColor:"white"
-    property var pBOpacity:FishUI.Theme.darkMode ? 0.5:0.7
+    property var pBOpacity:MatsyaUI.Theme.darkMode ? 0.5:0.7
     property var cCColor:"white"
-    property var cCOpacity:FishUI.Theme.darkMode ? 0.2:0.7
+    property var cCOpacity:MatsyaUI.Theme.darkMode ? 0.2:0.7
 
     property bool bluetoothDisConnected: Bluez.Manager.bluetoothBlocked
     property var defaultSinkValue: defaultSink ? defaultSink.volume / PulseAudio.NormalVolume * 100.0: -1
 
-    property var borderColor: windowHelper.compositing ? FishUI.Theme.darkMode ? Qt.rgba(255, 255, 255, 0.3)
-    : Qt.rgba(0, 0, 0, 0.2): FishUI.Theme.darkMode ? Qt.rgba(255, 255, 255, 0.15)
+    property var borderColor: windowHelper.compositing ? MatsyaUI.Theme.darkMode ? Qt.rgba(255, 255, 255, 0.3)
+    : Qt.rgba(0, 0, 0, 0.2): MatsyaUI.Theme.darkMode ? Qt.rgba(255, 255, 255, 0.15)
     : Qt.rgba(0, 0, 0, 0.15)
 
     property var brightnessIconName: {
@@ -138,14 +138,14 @@ ControlCenterDialog {
                             id: currentUser
                         }
 
-                        FishUI.WindowBlur {
+                        MatsyaUI.WindowBlur {
                             view: control
                             geometry: Qt.rect(control.x, control.y, control.width, control.height)
                             windowRadius: _background.radius
                             enabled: true
                         }
 
-                        FishUI.WindowShadow {
+                        MatsyaUI.WindowShadow {
                             view: control
                             geometry: Qt.rect(control.x, control.y, control.width, control.height)
                             radius: _background.radius
@@ -156,9 +156,9 @@ ControlCenterDialog {
                         Rectangle {
                             id: _background
                             anchors.fill: parent
-                            radius: windowHelper.compositing ? FishUI.Theme.bigRadius * 1.5: 0
-                            color: FishUI.Theme.darkMode ? "#4D4D4D": "#F0F0F0"
-                            opacity: windowHelper.compositing ? FishUI.Theme.darkMode ? 0.6: 0.8: 1.0
+                            radius: windowHelper.compositing ? MatsyaUI.Theme.bigRadius * 1.5: 0
+                            color: MatsyaUI.Theme.darkMode ? "#4D4D4D": "#F0F0F0"
+                            opacity: windowHelper.compositing ? MatsyaUI.Theme.darkMode ? 0.6: 0.8: 1.0
                             antialiasing: true
                             border.width: 1 / Screen.devicePixelRatio
                             border.pixelAligned: Screen.devicePixelRatio > 1 ? false: true
@@ -174,16 +174,16 @@ ControlCenterDialog {
                     ColumnLayout {
                         id: _mainLayout
                         anchors.fill: parent
-                        anchors.margins: FishUI.Units.largeSpacing
-                        spacing: FishUI.Units.largeSpacing
+                        anchors.margins: MatsyaUI.Units.largeSpacing
+                        spacing: MatsyaUI.Units.largeSpacing
 
-                    
+
 
 
                         RowLayout {
                             id: middleItemLayout
-                            anchors.rightMargin: FishUI.Units.largeSpacing
-                            spacing: FishUI.Units.largeSpacing
+                            anchors.rightMargin: MatsyaUI.Units.largeSpacing
+                            spacing: MatsyaUI.Units.largeSpacing
 
                             Item {
                                 id: cardItems
@@ -195,8 +195,8 @@ ControlCenterDialog {
                                 Rectangle {
                                     anchors.fill: parent
                                     color: cCColor
-                                    //color: FishUI.Theme.darkMode ? "#AEAEAE": "white"
-                                    radius: FishUI.Theme.bigRadius
+                                    //color: MatsyaUI.Theme.darkMode ? "#AEAEAE": "white"
+                                    radius: MatsyaUI.Theme.bigRadius
                                     opacity: cCOpacity
                                     //opacity: 0.8
                                 }
@@ -228,7 +228,7 @@ ControlCenterDialog {
                                     id: wirelessItem
                                     Layout.fillHeight: true
                                     Layout.preferredWidth: cardItems.cellWidth
-                                    icon: FishUI.Theme.darkMode || checked ? "qrc:/images/dark/network-wireless-connected-100.svg"
+                                    icon: MatsyaUI.Theme.darkMode || checked ? "qrc:/images/dark/network-wireless-connected-100.svg"
                                     : "qrc:/images/light/network-wireless-connected-100.svg"
                                     visible: enabledConnections.wirelessHwEnabled
                                     checked: enabledConnections.wirelessEnabled
@@ -236,7 +236,7 @@ ControlCenterDialog {
                                     onClicked: nmHandler.enableWireless(!checked)
                                     onPressAndHold: {
                                         control.visible = false
-                                        process.startDetached("cutefish-settings", ["-m", "wlan"])
+                                        process.startDetached("matsya-settings", ["-m", "wlan"])
                                     }
                                 }
                                 CardItem {
@@ -247,7 +247,7 @@ ControlCenterDialog {
                                     id: bluetoothItem
                                     Layout.fillHeight: true
                                     Layout.preferredWidth: cardItems.cellWidth
-                                    icon: FishUI.Theme.darkMode || checked ? "qrc:/images/dark/bluetooth-symbolic.svg"
+                                    icon: MatsyaUI.Theme.darkMode || checked ? "qrc:/images/dark/bluetooth-symbolic.svg"
                                     : "qrc:/images/light/bluetooth-symbolic.svg"
                                     checked: !control.bluetoothDisConnected
                                     label: !control.bluetoothDisConnected ?qsTr("On"): qsTr("Off")
@@ -255,7 +255,7 @@ ControlCenterDialog {
                                     onClicked: control.toggleBluetooth()
                                     onPressAndHold: {
                                         control.visible = false
-                                        process.startDetached("cutefish-settings", ["-m", "bluetooth"])
+                                        process.startDetached("matsya-settings", ["-m", "bluetooth"])
                                     }
                                 }
 
@@ -267,7 +267,7 @@ ControlCenterDialog {
                                     id: hotspot
                                     Layout.fillHeight: true
                                     Layout.preferredWidth: cardItems.cellWidth
-                                    icon: FishUI.Theme.darkMode || checked ? "qrc:/images/dark/hotspot.svg"
+                                    icon: MatsyaUI.Theme.darkMode || checked ? "qrc:/images/dark/hotspot.svg"
                                     : "qrc:/images/light/hotspot.svg"
                                     checked: handler.hotspotSupported
                                     label: qsTr("Not Supported")
@@ -281,8 +281,8 @@ ControlCenterDialog {
                 }
                 ColumnLayout {
                     id: cCenter2
-                    anchors.margins: FishUI.Units.largeSpacing
-                    spacing: FishUI.Units.largeSpacing
+                    anchors.margins: MatsyaUI.Units.largeSpacing
+                    spacing: MatsyaUI.Units.largeSpacing
 
                     Item {
                         id: cCDoNotDisturb
@@ -292,7 +292,7 @@ ControlCenterDialog {
                         Rectangle {
                             anchors.fill: parent
                             color: cCColor
-                            radius: FishUI.Theme.bigRadius
+                            radius: MatsyaUI.Theme.bigRadius
                             opacity: cCOpacity
 
                         }
@@ -313,7 +313,7 @@ ControlCenterDialog {
                                 CardItem {
                                     Layout.fillHeight: true
                                     Layout.preferredWidth: cardItems.cellWidth
-                                    icon: FishUI.Theme.darkMode || checked ? "qrc:/images/dark/dnd.svg"
+                                    icon: MatsyaUI.Theme.darkMode || checked ? "qrc:/images/dark/dnd.svg"
                                     : "qrc:/images/light/dnd.svg"
                                     checked: notifications.doNotDisturb
                                     label: qsTr("")
@@ -321,7 +321,7 @@ ControlCenterDialog {
                                     onClicked: notifications.doNotDisturb = !notifications.doNotDisturb
                                     onPressAndHold: {
                                         control.visible = false
-                                        process.startDetached("cutefish-settings", ["-m", "notifications", ])
+                                        process.startDetached("matsya-settings", ["-m", "notifications", ])
                                     }
                                 }}
                                 Label {
@@ -354,7 +354,7 @@ ControlCenterDialog {
                                 Rectangle {
                                     anchors.fill: parent
                                     color:cCColor
-                                    radius: FishUI.Theme.bigRadius
+                                    radius: MatsyaUI.Theme.bigRadius
                                     opacity:cCOpacity}
                                     GridLayout {
                                         anchors.fill: parent
@@ -370,11 +370,11 @@ ControlCenterDialog {
                                             implicitWidth: 40
                                             implicitHeight: 40
                                             Layout.alignment: Qt.AlignVCenter+Qt.AlignHCenter
-                                            checked: FishUI.Theme.darkMode
-                                            source: "qrc:/images/" + (FishUI.Theme.darkMode ? "light/": "dark/") + "dark-mode.svg"
-                                            onLeftButtonClicked: appearance.switchDarkMode(!FishUI.Theme.darkMode)
+                                            checked: MatsyaUI.Theme.darkMode
+                                            source: "qrc:/images/" + (MatsyaUI.Theme.darkMode ? "light/": "dark/") + "dark-mode.svg"
+                                            onLeftButtonClicked: appearance.switchDarkMode(!MatsyaUI.Theme.darkMode)
                                             onPressAndHold: {control.visible = false
-                                                process.startDetached("cutefish-settings", ["-m", "appearance"])
+                                                process.startDetached("matsya-settings", ["-m", "appearance"])
 
                                             }
                                         }
@@ -383,10 +383,10 @@ ControlCenterDialog {
 
                                     Label {
                                         topPadding: 50
-                                        leftPadding: FishUI.Units.largeSpacing
-                                        rightPadding: FishUI.Units.largeSpacing
-                                        //leftPadding: FishUI.Units.largeSpacing*2
-                                        //rightPadding: FishUI.Units.largeSpacing *2
+                                        leftPadding: MatsyaUI.Units.largeSpacing
+                                        rightPadding: MatsyaUI.Units.largeSpacing
+                                        //leftPadding: MatsyaUI.Units.largeSpacing*2
+                                        //rightPadding: MatsyaUI.Units.largeSpacing *2
                                         text: qsTr("Dark Mode")
                                         font.bold: true
                                         font.pointSize: 7
@@ -398,7 +398,7 @@ ControlCenterDialog {
                                     rightPadding: 15
                                     font.pointSize: 6
                                     font.bold: false
-                                    text: FishUI.Theme.darkMode || checked ? qsTr("Dark-layout")
+                                    text: MatsyaUI.Theme.darkMode || checked ? qsTr("Dark-layout")
                                     : qsTr("Light-layout")
 
                                 }*/}
@@ -416,7 +416,7 @@ ControlCenterDialog {
                                     Rectangle {
                                         anchors.fill: parent
                                         color: cCColor
-                                        radius: FishUI.Theme.bigRadius
+                                        radius: MatsyaUI.Theme.bigRadius
                                         anchors.leftMargin: 5
                                         opacity: cCOpacity
 
@@ -436,19 +436,19 @@ ControlCenterDialog {
                                             implicitWidth: 40
                                             implicitHeight: 40
                                             Layout.alignment: Qt.AlignVCenter+Qt.AlignHCenter
-                                            source: "qrc:/images/" + (FishUI.Theme.darkMode ? "dark/": "light/") + "screenshot.svg"
+                                            source: "qrc:/images/" + (MatsyaUI.Theme.darkMode ? "dark/": "light/") + "screenshot.svg"
                                             checked: false
                                             onLeftButtonClicked: {
                                                 control.visible = true
-                                                process.startDetached("cutefish-screenshot", ["-d", "500"])
+                                                process.startDetached("matsya-screenshot", ["-d", "500"])
                                             }
                                         }}
                                         Label {
                                             topPadding: 50
-                                            leftPadding: FishUI.Units.largeSpacing
-                                            rightPadding: FishUI.Units.largeSpacing
-                                            //leftPadding: FishUI.Units.largeSpacing*2
-                                            //rightPadding: FishUI.Units.largeSpacing *2
+                                            leftPadding: MatsyaUI.Units.largeSpacing
+                                            rightPadding: MatsyaUI.Units.largeSpacing
+                                            //leftPadding: MatsyaUI.Units.largeSpacing*2
+                                            //rightPadding: MatsyaUI.Units.largeSpacing *2
                                             text: qsTr("Screenshot")
                                             font.bold: true
                                             font.pointSize: 7
@@ -463,18 +463,18 @@ ControlCenterDialog {
 
 
 
-                                FishUI.Hideable{
+                                MatsyaUI.Hideable{
                                     id: pButtons
                                     RowLayout {
                                         id: pButtonLayout
-                                        anchors.rightMargin: FishUI.Units.largeSpacing
-                                        spacing: FishUI.Units.largeSpacing
+                                        anchors.rightMargin: MatsyaUI.Units.largeSpacing
+                                        spacing: MatsyaUI.Units.largeSpacing
 
 
                                         ColumnLayout {
                                             id: pButtons1
-                                            anchors.margins: FishUI.Units.largeSpacing
-                                            spacing: FishUI.Units.largeSpacing
+                                            anchors.margins: MatsyaUI.Units.largeSpacing
+                                            spacing: MatsyaUI.Units.largeSpacing
 
 
                                             GridLayout {
@@ -493,12 +493,12 @@ ControlCenterDialog {
                                                     Rectangle {
                                                         anchors.fill: parent
                                                         color: pBColor
-                                                        radius: FishUI.Theme.bigRadius
+                                                        radius: MatsyaUI.Theme.bigRadius
                                                         opacity: pBOpacity
                                                         Rectangle {
                                                             anchors.fill: parent
-                                                            color: FishUI.Theme.darkMode ? Qt.rgba(0, 0, 255, 0.5): Qt.rgba(0, 0, 255, 0.7)
-                                                            radius: FishUI.Theme.bigRadius
+                                                            color: MatsyaUI.Theme.darkMode ? Qt.rgba(0, 0, 255, 0.5): Qt.rgba(0, 0, 255, 0.7)
+                                                            radius: MatsyaUI.Theme.bigRadius
                                                             opacity: 0.8}}
 
                                                             GridLayout {
@@ -515,7 +515,7 @@ ControlCenterDialog {
                                                                     implicitWidth: 40
                                                                     implicitHeight: 40
                                                                     Layout.alignment: Qt.AlignVCenter+Qt.AlignHCenter
-                                                                    source: "qrc:/images/" + (FishUI.Theme.darkMode ? "dark/": "light/") + "system-suspend.svg"
+                                                                    source: "qrc:/images/" + (MatsyaUI.Theme.darkMode ? "dark/": "light/") + "system-suspend.svg"
                                                                     onLeftButtonClicked: actions.suspend()
                                                                 }
 
@@ -523,10 +523,10 @@ ControlCenterDialog {
 
                                                             Label {
                                                                 topPadding: 50
-                                                                leftPadding: FishUI.Units.largeSpacing*1.5
-                                                                rightPadding: FishUI.Units.largeSpacing
-                                                                //leftPadding: FishUI.Units.largeSpacing*2
-                                                                //rightPadding: FishUI.Units.largeSpacing *2
+                                                                leftPadding: MatsyaUI.Units.largeSpacing*1.5
+                                                                rightPadding: MatsyaUI.Units.largeSpacing
+                                                                //leftPadding: MatsyaUI.Units.largeSpacing*2
+                                                                //rightPadding: MatsyaUI.Units.largeSpacing *2
                                                                 text: qsTr("Suspend")
                                                                 font.bold: true
                                                                 font.pointSize: 7
@@ -538,7 +538,7 @@ ControlCenterDialog {
                                                             rightPadding: 15
                                                             font.pointSize: 6
                                                             font.bold: false
-                                                            text: FishUI.Theme.darkMode || checked ? qsTr("Dark-layout")
+                                                            text: MatsyaUI.Theme.darkMode || checked ? qsTr("Dark-layout")
                                                             : qsTr("Light-layout")
 
                                                         }*/}
@@ -551,13 +551,13 @@ ControlCenterDialog {
                                                             Rectangle {
                                                                 anchors.fill: parent
                                                                 color: pBColor
-                                                                radius: FishUI.Theme.bigRadius
+                                                                radius: MatsyaUI.Theme.bigRadius
                                                                 anchors.leftMargin: 5
                                                                 opacity: pBOpacity
                                                                 Rectangle {
                                                                     anchors.fill: parent
-                                                                    color: FishUI.Theme.darkMode ? Qt.rgba(0, 255, 0, 0.5): Qt.rgba(0, 255, 0, 0.7)
-                                                                    radius: FishUI.Theme.bigRadius
+                                                                    color: MatsyaUI.Theme.darkMode ? Qt.rgba(0, 255, 0, 0.5): Qt.rgba(0, 255, 0, 0.7)
+                                                                    radius: MatsyaUI.Theme.bigRadius
                                                                     opacity: 0.8}}
 
                                                                     anchors.leftMargin: 25
@@ -576,17 +576,17 @@ ControlCenterDialog {
                                                                             implicitWidth: 40
                                                                             implicitHeight: 40
                                                                             Layout.alignment: Qt.AlignVCenter+Qt.AlignHCenter
-                                                                            source: "qrc:/images/" + (FishUI.Theme.darkMode ? "dark/": "light/") + "system-reboot.svg"
+                                                                            source: "qrc:/images/" + (MatsyaUI.Theme.darkMode ? "dark/": "light/") + "system-reboot.svg"
                                                                             onLeftButtonClicked: {
                                                                                 actions.reboot()
                                                                             }
                                                                         }}
                                                                         Label {
                                                                             topPadding: 50
-                                                                            leftPadding: FishUI.Units.largeSpacing*1.7
-                                                                            rightPadding: FishUI.Units.largeSpacing
-                                                                            //leftPadding: FishUI.Units.largeSpacing*2
-                                                                            //rightPadding: FishUI.Units.largeSpacing *2
+                                                                            leftPadding: MatsyaUI.Units.largeSpacing*1.7
+                                                                            rightPadding: MatsyaUI.Units.largeSpacing
+                                                                            //leftPadding: MatsyaUI.Units.largeSpacing*2
+                                                                            //rightPadding: MatsyaUI.Units.largeSpacing *2
                                                                             text: qsTr("Reboot")
                                                                             font.bold: true
                                                                             font.pointSize: 7
@@ -603,12 +603,12 @@ ControlCenterDialog {
                                                                     Rectangle {
                                                                         anchors.fill: parent
                                                                         color: pBColor
-                                                                        radius: FishUI.Theme.bigRadius
+                                                                        radius: MatsyaUI.Theme.bigRadius
                                                                         opacity: pBOpacity
                                                                         Rectangle {
                                                                             anchors.fill: parent
-                                                                            color: FishUI.Theme.darkMode ? Qt.rgba(255, 0, 0, 0.5): Qt.rgba(255, 0, 0, 0.7)
-                                                                            radius: FishUI.Theme.bigRadius
+                                                                            color: MatsyaUI.Theme.darkMode ? Qt.rgba(255, 0, 0, 0.5): Qt.rgba(255, 0, 0, 0.7)
+                                                                            radius: MatsyaUI.Theme.bigRadius
                                                                             opacity: 0.8}
                                                                         }
                                                                         GridLayout{
@@ -629,7 +629,7 @@ ControlCenterDialog {
                                                                                 CardItem {
                                                                                     Layout.fillHeight: true
                                                                                     Layout.preferredWidth: cardItems.cellWidth
-                                                                                    icon: FishUI.Theme.darkMode ? "qrc:/images/dark/system-shutdown.svg"
+                                                                                    icon: MatsyaUI.Theme.darkMode ? "qrc:/images/dark/system-shutdown.svg"
                                                                                     : "qrc:/images/light/system-shutdown.svg"
 
                                                                                     label: qsTr("")
@@ -659,8 +659,8 @@ ControlCenterDialog {
                                                                     //second option
                                                                     ColumnLayout {
                                                                         id: pButtons2
-                                                                        anchors.margins: FishUI.Units.largeSpacing
-                                                                        spacing: FishUI.Units.largeSpacing
+                                                                        anchors.margins: MatsyaUI.Units.largeSpacing
+                                                                        spacing: MatsyaUI.Units.largeSpacing
 //Power Button LockScreen
                                                                         Item {
                                                                             id: pBLockScreen
@@ -670,13 +670,13 @@ ControlCenterDialog {
                                                                             Rectangle {
                                                                                 anchors.fill: parent
                                                                                 color: pBColor
-                                                                                radius: FishUI.Theme.bigRadius
+                                                                                radius: MatsyaUI.Theme.bigRadius
                                                                                 opacity: pBOpacity
 
                                                                                 Rectangle {
                                                                                     anchors.fill: parent
-                                                                                    color: FishUI.Theme.darkMode ? Qt.rgba(108, 0, 148, 0.5): Qt.rgba(98, 0, 138, 0.7)
-                                                                                    radius: FishUI.Theme.bigRadius
+                                                                                    color: MatsyaUI.Theme.darkMode ? Qt.rgba(108, 0, 148, 0.5): Qt.rgba(98, 0, 138, 0.7)
+                                                                                    radius: MatsyaUI.Theme.bigRadius
                                                                                     opacity: 0.8} }
                                                                                     GridLayout{anchors.fill: parent
                                                                                         anchors.topMargin: 9
@@ -695,7 +695,7 @@ ControlCenterDialog {
                                                                                             CardItem {
                                                                                                 Layout.fillHeight: true
                                                                                                 Layout.preferredWidth: cardItems.cellWidth
-                                                                                                icon: FishUI.Theme.darkMode ? "qrc:/images/dark/system-lock-screen.svg"
+                                                                                                icon: MatsyaUI.Theme.darkMode ? "qrc:/images/dark/system-lock-screen.svg"
                                                                                                 : "qrc:/images/light/system-lock-screen.svg"
 
                                                                                                 label: qsTr("")
@@ -735,12 +735,12 @@ ControlCenterDialog {
                                                                                             Rectangle {
                                                                                                 anchors.fill: parent
                                                                                                 color: pBColor
-                                                                                                radius: FishUI.Theme.bigRadius
+                                                                                                radius: MatsyaUI.Theme.bigRadius
                                                                                                 opacity: pBOpacity
                                                                                                 Rectangle {
                                                                                                     anchors.fill: parent
-                                                                                                    color: FishUI.Theme.darkMode ? Qt.rgba(255, 255, 0, 0.5): Qt.rgba(255, 255, 0, 0.7)
-                                                                                                    radius: FishUI.Theme.bigRadius
+                                                                                                    color: MatsyaUI.Theme.darkMode ? Qt.rgba(255, 255, 0, 0.5): Qt.rgba(255, 255, 0, 0.7)
+                                                                                                    radius: MatsyaUI.Theme.bigRadius
                                                                                                     opacity: 0.8}}
                                                                                                     GridLayout {
                                                                                                         anchors.fill: parent
@@ -756,18 +756,18 @@ ControlCenterDialog {
                                                                                                             implicitWidth: 40
                                                                                                             implicitHeight: 40
                                                                                                             Layout.alignment: Qt.AlignVCenter+Qt.AlignHCenter
-                                                                                                            source: "qrc:/images/" + (FishUI.Theme.darkMode ? "dark/": "light/") + "settings.svg"
-                                                                                                            onLeftButtonClicked: process.startDetached("cutefish-settings")
+                                                                                                            source: "qrc:/images/" + (MatsyaUI.Theme.darkMode ? "dark/": "light/") + "settings.svg"
+                                                                                                            onLeftButtonClicked: process.startDetached("matsya-settings")
                                                                                                         }
 
                                                                                                     }
 
                                                                                                     Label {
                                                                                                         topPadding: 50
-                                                                                                        leftPadding: FishUI.Units.largeSpacing*1.5
-                                                                                                        rightPadding: FishUI.Units.largeSpacing
-                                                                                                        //leftPadding: FishUI.Units.largeSpacing*2
-                                                                                                        //rightPadding: FishUI.Units.largeSpacing *2
+                                                                                                        leftPadding: MatsyaUI.Units.largeSpacing*1.5
+                                                                                                        rightPadding: MatsyaUI.Units.largeSpacing
+                                                                                                        //leftPadding: MatsyaUI.Units.largeSpacing*2
+                                                                                                        //rightPadding: MatsyaUI.Units.largeSpacing *2
                                                                                                         text: qsTr("Settings")
                                                                                                         font.bold: true
                                                                                                         font.pointSize: 7
@@ -779,7 +779,7 @@ ControlCenterDialog {
                                                                                                     rightPadding: 15
                                                                                                     font.pointSize: 6
                                                                                                     font.bold: false
-                                                                                                    text: FishUI.Theme.darkMode || checked ? qsTr("Dark-layout")
+                                                                                                    text: MatsyaUI.Theme.darkMode || checked ? qsTr("Dark-layout")
                                                                                                     : qsTr("Light-layout")
 
                                                                                                 }*/}
@@ -792,13 +792,13 @@ ControlCenterDialog {
                                                                                                     Rectangle {
                                                                                                         anchors.fill: parent
                                                                                                         color: pBColor
-                                                                                                        radius: FishUI.Theme.bigRadius
+                                                                                                        radius: MatsyaUI.Theme.bigRadius
                                                                                                         anchors.leftMargin: 5
                                                                                                         opacity: pBOpacity
                                                                                                         Rectangle {
                                                                                                             anchors.fill: parent
-                                                                                                            color: FishUI.Theme.darkMode ? Qt.rgba(0, 150, 150, 0.5): Qt.rgba(0, 150, 150, 0.7)
-                                                                                                            radius: FishUI.Theme.bigRadius
+                                                                                                            color: MatsyaUI.Theme.darkMode ? Qt.rgba(0, 150, 150, 0.5): Qt.rgba(0, 150, 150, 0.7)
+                                                                                                            radius: MatsyaUI.Theme.bigRadius
                                                                                                             opacity: 0.8}
                                                                                                         }anchors.leftMargin: 25
                                                                                                         anchors.topMargin: 25
@@ -816,17 +816,17 @@ ControlCenterDialog {
                                                                                                                 implicitWidth: 40
                                                                                                                 implicitHeight: 40
                                                                                                                 Layout.alignment: Qt.AlignVCenter+Qt.AlignHCenter
-                                                                                                                source: "qrc:/images/" + (FishUI.Theme.darkMode ? "dark/": "light/") + "system-log-out.svg"
+                                                                                                                source: "qrc:/images/" + (MatsyaUI.Theme.darkMode ? "dark/": "light/") + "system-log-out.svg"
                                                                                                                 onLeftButtonClicked: {
                                                                                                                     actions.logout()
                                                                                                                 }
                                                                                                             }}
                                                                                                             Label {
                                                                                                                 topPadding: 50
-                                                                                                                leftPadding: FishUI.Units.largeSpacing*1.7
-                                                                                                                rightPadding: FishUI.Units.largeSpacing
-                                                                                                                //leftPadding: FishUI.Units.largeSpacing*2
-                                                                                                                //rightPadding: FishUI.Units.largeSpacing *2
+                                                                                                                leftPadding: MatsyaUI.Units.largeSpacing*1.7
+                                                                                                                rightPadding: MatsyaUI.Units.largeSpacing
+                                                                                                                //leftPadding: MatsyaUI.Units.largeSpacing*2
+                                                                                                                //rightPadding: MatsyaUI.Units.largeSpacing *2
                                                                                                                 text: qsTr("Log Out")
                                                                                                                 font.bold: true
                                                                                                                 font.pointSize: 7
@@ -849,15 +849,15 @@ ControlCenterDialog {
                                                                                                         id: displaybg
                                                                                                         anchors.fill: parent
                                                                                                         color: cCColor
-                                                                                                        radius: FishUI.Theme.bigRadius
+                                                                                                        radius: MatsyaUI.Theme.bigRadius
                                                                                                         opacity: cCOpacity
                                                                                                     }
                                                                                                     Label {
                                                                                                         topPadding: 5
-                                                                                                        leftPadding: FishUI.Units.largeSpacing+3
-                                                                                                        rightPadding: FishUI.Units.largeSpacing
-                                                                                                        //leftPadding: FishUI.Units.largeSpacing*2
-                                                                                                        //rightPadding: FishUI.Units.largeSpacing *2
+                                                                                                        leftPadding: MatsyaUI.Units.largeSpacing+3
+                                                                                                        rightPadding: MatsyaUI.Units.largeSpacing
+                                                                                                        //leftPadding: MatsyaUI.Units.largeSpacing*2
+                                                                                                        //rightPadding: MatsyaUI.Units.largeSpacing *2
                                                                                                         text: qsTr("Display")
                                                                                                         font.bold: true
                                                                                                         font.pointSize: 10
@@ -869,11 +869,11 @@ ControlCenterDialog {
 
                                                                                                     RowLayout {
                                                                                                         anchors.fill: displaybg
-                                                                                                        anchors.leftMargin: FishUI.Units.largeSpacing
-                                                                                                        anchors.rightMargin: FishUI.Units.largeSpacing
-                                                                                                        anchors.topMargin: FishUI.Units.smallSpacing*5
-                                                                                                        anchors.bottomMargin: FishUI.Units.smallSpacing*2
-                                                                                                        spacing: FishUI.Units.largeSpacing
+                                                                                                        anchors.leftMargin: MatsyaUI.Units.largeSpacing
+                                                                                                        anchors.rightMargin: MatsyaUI.Units.largeSpacing
+                                                                                                        anchors.topMargin: MatsyaUI.Units.smallSpacing*5
+                                                                                                        anchors.bottomMargin: MatsyaUI.Units.smallSpacing*2
+                                                                                                        spacing: MatsyaUI.Units.largeSpacing
 
 
 
@@ -883,7 +883,7 @@ ControlCenterDialog {
                                                                                                             repeat: false
                                                                                                             onTriggered: brightness.setValue(brightnessSlider.value)
                                                                                                         }
-                                                                                                        FishUI.Fireslider {
+                                                                                                        MatsyaUI.Fireslider {
                                                                                                             GridLayout {
                                                                                                                 anchors.fill: parent
                                                                                                                 anchors.topMargin: 2
@@ -896,7 +896,7 @@ ControlCenterDialog {
                                                                                                                 Image { height: 14
                                                                                                                     width: height
                                                                                                                     sourceSize: Qt.size(width, height)
-                                                                                                                    source: "qrc:/images/" + (FishUI.Theme.darkMode ? "dark": "light") + "/" + control.brightnessIconName + ".svg"
+                                                                                                                    source: "qrc:/images/" + (MatsyaUI.Theme.darkMode ? "dark": "light") + "/" + control.brightnessIconName + ".svg"
                                                                                                                     smooth: false
                                                                                                                     antialiasing: true
                                                                                                                 }
@@ -913,19 +913,19 @@ ControlCenterDialog {
 
                                                                                                         //      Label {
                                                                                                         //        text: brightnessSlider.value + "%"
-                                                                                                        //       color: FishUI.Theme.disabledTextColor
+                                                                                                        //       color: MatsyaUI.Theme.disabledTextColor
                                                                                                         //      Layout.preferredWidth: _fontMetrics.advanceWidth("100%")
                                                                                                         // }
-                                                                                                        FishUI.FireIconButton{
+                                                                                                        MatsyaUI.FireIconButton{
                                                                                                             id: displayButton
                                                                                                             implicitWidth: 25
                                                                                                             implicitHeight: 25
                                                                                                             Layout.alignment: Qt.AlignVCenter+Qt.AlignHCenter
-                                                                                                            source: "qrc:/images/" + (FishUI.Theme.darkMode ? "dark/": "light/") + "display.svg"
+                                                                                                            source: "qrc:/images/" + (MatsyaUI.Theme.darkMode ? "dark/": "light/") + "display.svg"
                                                                                                             checked: false
                                                                                                             onLeftButtonClicked: {
                                                                                                                 control.visible = true
-                                                                                                                process.startDetached("cutefish-settings", ["-m", "display"])
+                                                                                                                process.startDetached("matsya-settings", ["-m", "display"])
                                                                                                             }}
                                                                                                         }
                                                                                                     }
@@ -942,15 +942,15 @@ ControlCenterDialog {
                                                                                                             id: soundsItembg
                                                                                                             anchors.fill: parent
                                                                                                             color: cCColor
-                                                                                                            radius: FishUI.Theme.bigRadius
+                                                                                                            radius: MatsyaUI.Theme.bigRadius
                                                                                                             opacity:cCOpacity
                                                                                                         }
                                                                                                         Label {
                                                                                                             topPadding: 5
-                                                                                                            leftPadding: FishUI.Units.largeSpacing+3
-                                                                                                            rightPadding: FishUI.Units.largeSpacing
-                                                                                                            //leftPadding: FishUI.Units.largeSpacing*2
-                                                                                                            //rightPadding: FishUI.Units.largeSpacing *2
+                                                                                                            leftPadding: MatsyaUI.Units.largeSpacing+3
+                                                                                                            rightPadding: MatsyaUI.Units.largeSpacing
+                                                                                                            //leftPadding: MatsyaUI.Units.largeSpacing*2
+                                                                                                            //rightPadding: MatsyaUI.Units.largeSpacing *2
                                                                                                             text: qsTr("Sounds")
                                                                                                             font.bold: true
                                                                                                             font.pointSize: 10
@@ -961,21 +961,21 @@ ControlCenterDialog {
                                                                                                         }
                                                                                                         RowLayout {
                                                                                                             anchors.fill: soundsItembg
-                                                                                                            anchors.leftMargin: FishUI.Units.largeSpacing
-                                                                                                            anchors.rightMargin: FishUI.Units.largeSpacing
-                                                                                                            anchors.topMargin: FishUI.Units.smallSpacing*5
-                                                                                                            anchors.bottomMargin: FishUI.Units.smallSpacing*2
-                                                                                                            spacing: FishUI.Units.largeSpacing
+                                                                                                            anchors.leftMargin: MatsyaUI.Units.largeSpacing
+                                                                                                            anchors.rightMargin: MatsyaUI.Units.largeSpacing
+                                                                                                            anchors.topMargin: MatsyaUI.Units.smallSpacing*5
+                                                                                                            anchors.bottomMargin: MatsyaUI.Units.smallSpacing*2
+                                                                                                            spacing: MatsyaUI.Units.largeSpacing
 
                                                                                                             /*Image {
                                                                                                             height: 16
                                                                                                             width: height
                                                                                                             sourceSize: Qt.size(width, height)
-                                                                                                            source: "qrc:/images/" + (FishUI.Theme.darkMode ? "dark": "light") + "/" + control.volumeIconName + ".svg"
+                                                                                                            source: "qrc:/images/" + (MatsyaUI.Theme.darkMode ? "dark": "light") + "/" + control.volumeIconName + ".svg"
                                                                                                             smooth: false
                                                                                                             antialiasing: true
                                                                                                         }*/
-                                                                                                        FishUI.Fireslider {
+                                                                                                        MatsyaUI.Fireslider {
                                                                                                             GridLayout {
                                                                                                                 anchors.fill: parent
                                                                                                                 anchors.topMargin: 2
@@ -989,7 +989,7 @@ ControlCenterDialog {
                                                                                                                     height: 14
                                                                                                                     width: height
                                                                                                                     sourceSize: Qt.size(width, height)
-                                                                                                                    source: "qrc:/images/" + (FishUI.Theme.darkMode ? "dark": "light") + "/" + control.volumeIconName + ".svg"
+                                                                                                                    source: "qrc:/images/" + (MatsyaUI.Theme.darkMode ? "dark": "light") + "/" + control.volumeIconName + ".svg"
                                                                                                                     smooth: false
                                                                                                                     antialiasing: true
                                                                                                                 }
@@ -1016,14 +1016,14 @@ ControlCenterDialog {
                                                                                                         //                Label {
                                                                                                         //                    text: parseInt(volumeSlider.value / PulseAudio.NormalVolume * 100.0) + "%"
                                                                                                         //                    Layout.preferredWidth: _fontMetrics.advanceWidth("100%")
-                                                                                                        //                    color: FishUI.Theme.disabledTextColor
+                                                                                                        //                    color: MatsyaUI.Theme.disabledTextColor
                                                                                                         //                }
-                                                                                                        FishUI.FireIconButton{
+                                                                                                        MatsyaUI.FireIconButton{
                                                                                                             id: soundsButton
                                                                                                             implicitWidth: 25
                                                                                                             implicitHeight: 25
                                                                                                             Layout.alignment: Qt.AlignVCenter+Qt.AlignHCenter
-                                                                                                            source: "qrc:/images/" + (FishUI.Theme.darkMode ? "dark/": "light/") + "sounds.svg"
+                                                                                                            source: "qrc:/images/" + (MatsyaUI.Theme.darkMode ? "dark/": "light/") + "sounds.svg"
                                                                                                             checked: false
                                                                                                             onLeftButtonClicked: {
                                                                                                                 control.visible = true
@@ -1040,7 +1040,7 @@ ControlCenterDialog {
 
 
                                                                                                     //mpris item
-  
+
 
 
 
@@ -1054,14 +1054,14 @@ ControlCenterDialog {
                                                                                                     }
 
                                                                                                     RowLayout {
-                                                                                                        Layout.leftMargin: FishUI.Units.smallSpacing
-                                                                                                        Layout.rightMargin: FishUI.Units.smallSpacing
+                                                                                                        Layout.leftMargin: MatsyaUI.Units.smallSpacing
+                                                                                                        Layout.rightMargin: MatsyaUI.Units.smallSpacing
                                                                                                         spacing: 0
 
                                                                                                         Label {
                                                                                                             id: timeLabel
-                                                                                                            leftPadding: FishUI.Units.smallSpacing / 2
-                                                                                                            color: FishUI.Theme.textColor
+                                                                                                            leftPadding: MatsyaUI.Units.smallSpacing / 2
+                                                                                                            color: MatsyaUI.Theme.textColor
 
                                                                                                             Timer {
                                                                                                                 interval: 1000
@@ -1083,13 +1083,13 @@ ControlCenterDialog {
 
                                                                                                             animationEnabled: true
                                                                                                             Layout.fillHeight: true
-                                                                                                            Layout.preferredWidth: shutdownIcon.implicitWidth + FishUI.Units.smallSpacing
+                                                                                                            Layout.preferredWidth: shutdownIcon.implicitWidth + MatsyaUI.Units.smallSpacing
                                                                                                             checked: shutdownDialog.item.visible
 
                                                                                                             onClicked: {pButtons.toggle()
                                                                                                                 //control.visible = true
                                                                                                                 //shutdownMenu.toggle()
-                                                                                                                //process.startDetached("cutefish-settings", ["-m", "accounts"])
+                                                                                                                //process.startDetached("matsya-settings", ["-m", "accounts"])
                                                                                                             }
 
                                                                                                             Image {
@@ -1106,12 +1106,12 @@ ControlCenterDialog {
                                                                                                         }
 
                                                                                                         StandardItem {
-                                                                                                            width: batteryLayout.implicitWidth + FishUI.Units.largeSpacing
-                                                                                                            height: batteryLayout.implicitHeight + FishUI.Units.largeSpacing
+                                                                                                            width: batteryLayout.implicitWidth + MatsyaUI.Units.largeSpacing
+                                                                                                            height: batteryLayout.implicitHeight + MatsyaUI.Units.largeSpacing
 
                                                                                                             onClicked: {
                                                                                                                 control.visible = false
-                                                                                                                process.startDetached("cutefish-settings", ["-m", "battery"])
+                                                                                                                process.startDetached("matsya-settings", ["-m", "battery"])
                                                                                                             }
 
                                                                                                             RowLayout {
@@ -1125,7 +1125,7 @@ ControlCenterDialog {
                                                                                                                     width: 22
                                                                                                                     height: 16
                                                                                                                     sourceSize: Qt.size(width, height)
-                                                                                                                    source: "qrc:/images/" + (FishUI.Theme.darkMode ? "dark/": "light/") + battery.iconSource
+                                                                                                                    source: "qrc:/images/" + (MatsyaUI.Theme.darkMode ? "dark/": "light/") + battery.iconSource
                                                                                                                     asynchronous: true
                                                                                                                     Layout.alignment: Qt.AlignHCenter | Qt.AlignVCenter
                                                                                                                     antialiasing: true
@@ -1134,8 +1134,8 @@ ControlCenterDialog {
 
                                                                                                                 Label {
                                                                                                                     text: battery.chargePercent + "%"
-                                                                                                                    color: FishUI.Theme.textColor
-                                                                                                                    rightPadding: FishUI.Units.smallSpacing / 2
+                                                                                                                    color: MatsyaUI.Theme.textColor
+                                                                                                                    rightPadding: MatsyaUI.Units.smallSpacing / 2
                                                                                                                     Layout.alignment: Qt.AlignHCenter | Qt.AlignVCenter
                                                                                                                 }
                                                                                                             }

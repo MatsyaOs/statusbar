@@ -210,9 +210,9 @@
     <valuelist type="QVariantList" key="CustomOutputParsers"/>
     <value type="int" key="PE.EnvironmentAspect.Base">2</value>
     <valuelist type="QVariantList" key="PE.EnvironmentAspect.Changes"/>
-    <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">cutefish-statusbar</value>
-    <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">CMakeProjectManager.CMakeRunConfiguration.cutefish-statusbar</value>
-    <value type="QString" key="ProjectExplorer.RunConfiguration.BuildKey">cutefish-statusbar</value>
+    <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">matsya-statusbar</value>
+    <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">CMakeProjectManager.CMakeRunConfiguration.matsya-statusbar</value>
+    <value type="QString" key="ProjectExplorer.RunConfiguration.BuildKey">matsya-statusbar</value>
     <value type="bool" key="RunConfiguration.UseCppDebugger">false</value>
     <value type="bool" key="RunConfiguration.UseCppDebuggerAuto">true</value>
     <value type="bool" key="RunConfiguration.UseLibrarySearchPath">true</value>

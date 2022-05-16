@@ -1,7 +1,7 @@
 /*
- * Copyright (C) 2021 CutefishOS Team.
+ * Copyright (C) 2021 MatsyaOS Team.
  *
- * Author:     Reion Wong <aj@cutefishos.com>
+ * Author:
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -22,10 +22,10 @@ import QtQuick.Layouts 1.12
 import QtQuick.Controls 2.12
 import QtQuick.Window 2.12
 
-import Cutefish.System 1.0 as System
-import Cutefish.StatusBar 1.0
-import Cutefish.NetworkManagement 1.0 as NM
-import FishUI 1.0 as FishUI
+import Matsya.System 1.0 as System
+import Matsya.StatusBar 1.0
+import Matsya.NetworkManagement 1.0 as NM
+import MatsyaUI 1.0 as MatsyaUI
 
 Item {
     id: rootItem
@@ -76,8 +76,8 @@ Item {
         anchors.fill: parent
         opacity: 0.3
 
-//        color: FishUI.Theme.darkMode ? "#4D4D4D" : "#FFFFFF"
-//        opacity: windowHelper.compositing ? FishUI.Theme.darkMode ? 0.5 : 0.7 : 1.0
+//        color: MatsyaUI.Theme.darkMode ? "#4D4D4D" : "#FFFFFF"
+//        opacity: windowHelper.compositing ? MatsyaUI.Theme.darkMode ? 0.5 : 0.7 : 1.0
 
 //        Behavior on color {
 //            ColorAnimation {
@@ -87,15 +87,15 @@ Item {
 //        }
     }
 
-    FishUI.WindowHelper {
+    MatsyaUI.WindowHelper {
         id: windowHelper
     }
 
-    FishUI.PopupTips {
+    MatsyaUI.PopupTips {
         id: popupTips
     }
 
-    FishUI.DesktopMenu {
+    MatsyaUI.DesktopMenu {
         id: acticityMenu
 
         MenuItem {
@@ -107,9 +107,9 @@ Item {
     // Main layout
     RowLayout {
         anchors.fill: parent
-        anchors.leftMargin: FishUI.Units.smallSpacing
-        anchors.rightMargin: FishUI.Units.smallSpacing
-        spacing: FishUI.Units.smallSpacing / 2
+        anchors.leftMargin: MatsyaUI.Units.smallSpacing
+        anchors.rightMargin: MatsyaUI.Units.smallSpacing
+        spacing: MatsyaUI.Units.smallSpacing / 2
 
         // App name
         StandardItem {
@@ -117,7 +117,7 @@ Item {
             animationEnabled: true
             Layout.fillHeight: true
             Layout.preferredWidth: Math.min(rootItem.width / 3,
-                                            acticityLayout.implicitWidth + FishUI.Units.largeSpacing)
+                                            acticityLayout.implicitWidth + MatsyaUI.Units.largeSpacing)
             onClicked: {
                 if (mouse.button === Qt.RightButton)
                     acticityMenu.open()
@@ -126,15 +126,15 @@ Item {
             RowLayout {
                 id: acticityLayout
                 anchors.fill: parent
-                anchors.leftMargin: FishUI.Units.smallSpacing
-                anchors.rightMargin: FishUI.Units.smallSpacing
-                spacing: FishUI.Units.smallSpacing
+                anchors.leftMargin: MatsyaUI.Units.smallSpacing
+                anchors.rightMargin: MatsyaUI.Units.smallSpacing
+                spacing: MatsyaUI.Units.smallSpacing
                 StandardItem {
                            id: shutdownItem
 
                            animationEnabled: true
                            Layout.fillHeight: true
-                           Layout.preferredWidth: shutdownIcon.implicitWidth + FishUI.Units.smallSpacing
+                           Layout.preferredWidth: shutdownIcon.implicitWidth + MatsyaUI.Units.smallSpacing
                          /*  checked: shutdownDialog.item.visible
 
                            onClicked: {
@@ -156,7 +156,7 @@ Item {
                            }
                        }
 
- 
+
 
                 Label {
                     id: acticityLabel
@@ -181,7 +181,7 @@ Item {
                 id: appMenuView
                 anchors.fill: parent
                 orientation: Qt.Horizontal
-                spacing: FishUI.Units.smallSpacing
+                spacing: MatsyaUI.Units.smallSpacing
                 visible: appMenuModel.visible
                 interactive: false
                 clip: true
@@ -196,7 +196,7 @@ Item {
 
                 delegate: StandardItem {
                     id: _menuItem
-                    width: _actionText.width + FishUI.Units.largeSpacing
+                    width: _actionText.width + MatsyaUI.Units.largeSpacing
                     height: ListView.view.height
                     checked: appMenuApplet.currentIndex === index
 
@@ -275,7 +275,7 @@ Item {
        //   checked: controlCenter.item.visible
             animationEnabled: true
             Layout.fillHeight: true
-            Layout.preferredWidth: _controlerLayout.implicitWidth + FishUI.Units.largeSpacing
+            Layout.preferredWidth: _controlerLayout.implicitWidth + MatsyaUI.Units.largeSpacing
 
         //  onClicked: {
           //    toggleDialog()
@@ -295,10 +295,10 @@ Item {
             RowLayout {
                 id: _controlerLayout
                 anchors.fill: parent
-                anchors.leftMargin: FishUI.Units.smallSpacing
-                anchors.rightMargin: FishUI.Units.smallSpacing
+                anchors.leftMargin: MatsyaUI.Units.smallSpacing
+                anchors.rightMargin: MatsyaUI.Units.smallSpacing
 
-                spacing: FishUI.Units.largeSpacing
+                spacing: MatsyaUI.Units.largeSpacing
 
                 Image {
                     id: volumeIcon
@@ -362,7 +362,7 @@ Item {
             checked: controlCenter.item.visible
             animationEnabled: true
             Layout.fillHeight: true
-            Layout.preferredWidth: controlENter.implicitWidth + FishUI.Units.largeSpacing
+            Layout.preferredWidth: controlENter.implicitWidth + MatsyaUI.Units.largeSpacing
 
             onClicked: {
                 toggleDialog()
@@ -389,14 +389,14 @@ Item {
                 smooth: false
             }
         }
-
+/*
 
  StandardItem {
             id: siriItem
 
     animationEnabled: true
     Layout.fillHeight: true
-    Layout.preferredWidth: siriIcon.implicitWidth + FishUI.Units.smallSpacing
+    Layout.preferredWidth: siriIcon.implicitWidth + MatsyaUI.Units.smallSpacing
 checked: shutdownDialog.item.visible
 
     onClicked: {
@@ -418,7 +418,7 @@ checked: shutdownDialog.item.visible
                 antialiasing: true
                 smooth: false
             }
-            }
+            }*/
 
         // Pop-up notification center and calendar
         StandardItem {
@@ -426,10 +426,10 @@ checked: shutdownDialog.item.visible
 
             animationEnabled: true
             Layout.fillHeight: true
-            Layout.preferredWidth: _dateTimeLayout.implicitWidth + FishUI.Units.smallSpacing
+            Layout.preferredWidth: _dateTimeLayout.implicitWidth + MatsyaUI.Units.smallSpacing
 
             onClicked: {
-                process.startDetached("cutefish-notificationd", ["-s"])
+                process.startDetached("matsya-notificationd", ["-s"])
             }
 
             RowLayout {

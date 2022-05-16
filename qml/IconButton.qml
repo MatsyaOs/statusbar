@@ -16,11 +16,11 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
- 
+
 import QtQuick 2.12
 import QtQuick.Controls 2.12
 import QtQuick.Layouts 1.12
-import FishUI 1.0 as FishUI
+import MatsyaUI 1.0 as MatsyaUI
 
 Item {
     id: control
@@ -34,17 +34,17 @@ Item {
     signal rightButtonClicked
     signal clicked
     signal pressAndHold
-    property var backgroundColor: FishUI.Theme.darkMode ? Qt.rgba(255, 255, 255, 0.1)
+    property var backgroundColor: MatsyaUI.Theme.darkMode ? Qt.rgba(255, 255, 255, 0.1)
                                                          : Qt.rgba(0, 0, 0, 0.05)
-     property var hoverColor: FishUI.Theme.darkMode ? Qt.rgba(255, 255, 255, 0.15)
+     property var hoverColor: MatsyaUI.Theme.darkMode ? Qt.rgba(255, 255, 255, 0.15)
                                                     : Qt.rgba(0, 0, 0, 0.1)
-     property var pressedColor: FishUI.Theme.darkMode ? Qt.rgba(255, 255, 255, 0.2)
+     property var pressedColor: MatsyaUI.Theme.darkMode ? Qt.rgba(255, 255, 255, 0.2)
                                                       : Qt.rgba(0, 0, 0, 0.15)
 
-     property var highlightHoverColor: FishUI.Theme.darkMode ? Qt.lighter(FishUI.Theme.highlightColor, 1.1)
-                                                             : Qt.darker(FishUI.Theme.highlightColor, 1.1)
-     property var highlightPressedColor: FishUI.Theme.darkMode ? Qt.lighter(FishUI.Theme.highlightColor, 1.1)
-                                                               : Qt.darker(FishUI.Theme.highlightColor, 1.2)
+     property var highlightHoverColor: MatsyaUI.Theme.darkMode ? Qt.lighter(MatsyaUI.Theme.highlightColor, 1.1)
+                                                             : Qt.darker(MatsyaUI.Theme.highlightColor, 1.1)
+     property var highlightPressedColor: MatsyaUI.Theme.darkMode ? Qt.lighter(MatsyaUI.Theme.highlightColor, 1.1)
+                                                               : Qt.darker(MatsyaUI.Theme.highlightColor, 1.2)
 
 
 
@@ -73,9 +73,9 @@ Item {
        /* color: {
             if (mouseArea.containsMouse) {
                 if (mouseArea.containsPress)
-                    return (FishUI.Theme.darkMode) ? Qt.rgba(255, 255, 255, 0.3) : Qt.rgba(0, 0, 0, 0.2)
+                    return (MatsyaUI.Theme.darkMode) ? Qt.rgba(255, 255, 255, 0.3) : Qt.rgba(0, 0, 0, 0.2)
                 else
-                    return (FishUI.Theme.darkMode) ? Qt.rgba(255, 255, 255, 0.2) : Qt.rgba(0, 0, 0, 0.1)
+                    return (MatsyaUI.Theme.darkMode) ? Qt.rgba(255, 255, 255, 0.2) : Qt.rgba(0, 0, 0, 0.1)
             }
 
             return "transparent"
@@ -87,7 +87,7 @@ Item {
                 else if (mouseArea.containsMouse)
                     return highlightHoverColor
                 else
-                    return FishUI.Theme.highlightColor
+                    return MatsyaUI.Theme.highlightColor
             } else {
                 if (mouseArea.pressed)
                     return pressedColor
@@ -112,4 +112,3 @@ Item {
         smooth: false
     }
 }
-

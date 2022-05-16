@@ -3,8 +3,8 @@ import QtQuick.Layouts 1.12
 import QtQuick.Controls 2.12
 import QtGraphicalEffects 1.0
 
-import Cutefish.StatusBar 1.0
-import FishUI 1.0 as FishUI
+import Matsya.StatusBar 1.0
+import MatsyaUI 1.0 as MatsyaUI
 
 ListView {
     id: trayView
@@ -13,12 +13,12 @@ ListView {
     layoutDirection: Qt.RightToLeft
     interactive: false
     clip: true
-    spacing: FishUI.Units.smallSpacing / 2
+    spacing: MatsyaUI.Units.smallSpacing / 2
 
-    property real itemWidth: rootItem.iconSize + FishUI.Units.largeSpacing
+    property real itemWidth: rootItem.iconSize + MatsyaUI.Units.largeSpacing
 
     Layout.fillHeight: true
-    Layout.preferredWidth: (itemWidth + (count - 1) * FishUI.Units.smallSpacing) * count
+    Layout.preferredWidth: (itemWidth + (count - 1) * MatsyaUI.Units.smallSpacing) * count
 
     model: SystemTrayModel {
         id: trayModel
@@ -102,7 +102,7 @@ ListView {
             visible: model.canColorOverlay
         }
 
-        FishUI.IconItem {
+        MatsyaUI.IconItem {
             id: iconItem
             anchors.centerIn: parent
             width: rootItem.iconSize
