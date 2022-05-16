@@ -1,0 +1,10 @@
+/home/tokyo/clone/RebootOS/statusbar-old/build/CMakeFiles/install/local.dir
+/home/tokyo/clone/RebootOS/statusbar-old/build/CMakeFiles/install.dir
+/home/tokyo/clone/RebootOS/statusbar-old/build/CMakeFiles/list_install_components.dir
+/home/tokyo/clone/RebootOS/statusbar-old/build/CMakeFiles/rebuild_cache.dir
+/home/tokyo/clone/RebootOS/statusbar-old/build/CMakeFiles/edit_cache.dir
+/home/tokyo/clone/RebootOS/statusbar-old/build/CMakeFiles/translations.dir
+/home/tokyo/clone/RebootOS/statusbar-old/build/CMakeFiles/install/strip.dir
+/home/tokyo/clone/RebootOS/statusbar-old/build/CMakeFiles/cutefish-statusbar.dir
+/home/tokyo/clone/RebootOS/statusbar-old/build/CMakeFiles/KF5WindowSystem_QCH.dir
+/home/tokyo/clone/RebootOS/statusbar-old/build/CMakeFiles/cutefish-statusbar_autogen.dir

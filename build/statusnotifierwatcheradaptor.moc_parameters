@@ -1,0 +1,5 @@
+-I/home/tokyo/clone/RebootOS/statusbar-old
+-I/home/tokyo/clone/RebootOS/statusbar-old/build
+-o
+/home/tokyo/clone/RebootOS/statusbar-old/build/statusnotifierwatcheradaptor.moc
+/home/tokyo/clone/RebootOS/statusbar-old/build/statusnotifierwatcheradaptor.h
