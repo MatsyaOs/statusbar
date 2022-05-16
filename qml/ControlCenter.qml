@@ -883,7 +883,7 @@ ControlCenterDialog {
                                                                                                             repeat: false
                                                                                                             onTriggered: brightness.setValue(brightnessSlider.value)
                                                                                                         }
-                                                                                                        MatsyaUI.Fireslider {
+                                                                                                        MatsyaUI.Matsyaslider {
                                                                                                             GridLayout {
                                                                                                                 anchors.fill: parent
                                                                                                                 anchors.topMargin: 2
@@ -916,7 +916,7 @@ ControlCenterDialog {
                                                                                                         //       color: MatsyaUI.Theme.disabledTextColor
                                                                                                         //      Layout.preferredWidth: _fontMetrics.advanceWidth("100%")
                                                                                                         // }
-                                                                                                        MatsyaUI.FireIconButton{
+                                                                                                        MatsyaUI.MatsyaIconButton{
                                                                                                             id: displayButton
                                                                                                             implicitWidth: 25
                                                                                                             implicitHeight: 25
@@ -975,7 +975,7 @@ ControlCenterDialog {
                                                                                                             smooth: false
                                                                                                             antialiasing: true
                                                                                                         }*/
-                                                                                                        MatsyaUI.Fireslider {
+                                                                                                        MatsyaUI.Matsyaslider {
                                                                                                             GridLayout {
                                                                                                                 anchors.fill: parent
                                                                                                                 anchors.topMargin: 2
@@ -1018,7 +1018,7 @@ ControlCenterDialog {
                                                                                                         //                    Layout.preferredWidth: _fontMetrics.advanceWidth("100%")
                                                                                                         //                    color: MatsyaUI.Theme.disabledTextColor
                                                                                                         //                }
-                                                                                                        MatsyaUI.FireIconButton{
+                                                                                                        MatsyaUI.MatsyaIconButton{
                                                                                                             id: soundsButton
                                                                                                             implicitWidth: 25
                                                                                                             implicitHeight: 25
