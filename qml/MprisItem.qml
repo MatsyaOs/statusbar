@@ -1,7 +1,7 @@
 /*
  * Copyright (C) 2021 MatsyaOS Team.
  *
- * Author:    
+ * Author:     Reion Wong <aj@matsyaos.com>
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -34,7 +34,7 @@ Item {
     property var titleTag: Mpris.metadataToString(Mpris.Title)
     property var artistTag: Mpris.metadataToString(Mpris.Artist)
 
-MprisManager {
+    MprisManager {
         id: mprisManager
 
         onCurrentServiceChanged: {
@@ -60,9 +60,9 @@ MprisManager {
 
     Rectangle {
         anchors.fill: parent
-        color: MatsyaUI.Theme.backgroundColor
+        color: "white"
         radius: MatsyaUI.Theme.bigRadius
-        opacity: MatsyaUI.Theme.darkMode ? 0.2 : 0.1
+        opacity: MatsyaUI.Theme.darkMode ? 0.2 : 0.7
     }
 
     RowLayout {

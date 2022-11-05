@@ -1,7 +1,7 @@
 /*
- * Copyright (C) 2021 CutefishOS Team.
+ * Copyright (C) 2021 MatsyaOS Team.
  *
- * Author:     Reion Wong <aj@cutefishos.com>
+ * Author:     Reion Wong <aj@matsyaos.com>
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -26,27 +26,11 @@ Item {
     id: control
 
     property url source
-    property bool checked: false
     property real size: 24
     property string popupText
 
     signal leftButtonClicked
     signal rightButtonClicked
-    signal clicked
-    signal pressAndHold
-    property var backgroundColor: MatsyaUI.Theme.darkMode ? Qt.rgba(255, 255, 255, 0.1)
-                                                         : Qt.rgba(0, 0, 0, 0.05)
-     property var hoverColor: MatsyaUI.Theme.darkMode ? Qt.rgba(255, 255, 255, 0.15)
-                                                    : Qt.rgba(0, 0, 0, 0.1)
-     property var pressedColor: MatsyaUI.Theme.darkMode ? Qt.rgba(255, 255, 255, 0.2)
-                                                      : Qt.rgba(0, 0, 0, 0.15)
-
-     property var highlightHoverColor: MatsyaUI.Theme.darkMode ? Qt.lighter(MatsyaUI.Theme.highlightColor, 1.1)
-                                                             : Qt.darker(MatsyaUI.Theme.highlightColor, 1.1)
-     property var highlightPressedColor: MatsyaUI.Theme.darkMode ? Qt.lighter(MatsyaUI.Theme.highlightColor, 1.1)
-                                                               : Qt.darker(MatsyaUI.Theme.highlightColor, 1.2)
-
-
 
     MouseArea {
         id: mouseArea
@@ -60,17 +44,14 @@ Item {
             else if (mouse.button === Qt.RightButton)
                 control.rightButtonClicked()
         }
-        onPressAndHold: {
-            control.pressAndHold()
-        }
     }
 
     Rectangle {
         anchors.fill: parent
         // radius: parent.height * 0.2
-       //radius: parent.height / 2
-        radius: height/2
-       /* color: {
+        radius: parent.height / 2
+
+        color: {
             if (mouseArea.containsMouse) {
                 if (mouseArea.containsPress)
                     return (MatsyaUI.Theme.darkMode) ? Qt.rgba(255, 255, 255, 0.3) : Qt.rgba(0, 0, 0, 0.2)
@@ -79,33 +60,16 @@ Item {
             }
 
             return "transparent"
-        }*/
-        color: {
-            if (control.checked) {
-                if (mouseArea.pressed)
-                    return highlightPressedColor
-                else if (mouseArea.containsMouse)
-                    return highlightHoverColor
-                else
-                    return MatsyaUI.Theme.highlightColor
-            } else {
-                if (mouseArea.pressed)
-                    return pressedColor
-                else if (mouseArea.containsMouse)
-                    return hoverColor
-                else
-                    return backgroundColor
-            }
         }
     }
 
     Image {
         id: iconImage
         anchors.centerIn: parent
-        width:22
-        height:22
-        sourceSize.width:22
-        sourceSize.height:22
+        width: parent.height * 0.75
+        height: width
+        sourceSize.width: width
+        sourceSize.height: height
         source: control.source
         asynchronous: true
         antialiasing: true
