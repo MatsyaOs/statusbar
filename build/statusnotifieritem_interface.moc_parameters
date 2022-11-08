@@ -1,0 +1,5 @@
+-I/run/media/tokyo/DATA/Documents/final/statusbar
+-I/run/media/tokyo/DATA/Documents/final/statusbar/build
+-o
+/run/media/tokyo/DATA/Documents/final/statusbar/build/statusnotifieritem_interface.moc
+/run/media/tokyo/DATA/Documents/final/statusbar/build/statusnotifieritem_interface.h

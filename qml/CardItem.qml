@@ -1,7 +1,7 @@
 /*
- * Copyright (C) 2021 MatsyaOS Team.
+ * Copyright (C) 2021 CutefishOS Team.
  *
- * Author:     Reion Wong <aj@matsyaos.com>
+ * Author:     Reion Wong <aj@cutefishos.com>
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -29,11 +29,12 @@ Item {
     property bool checked: false
     property alias icon: _image.source
     property alias label: _titleLabel.text
+    property alias label2:_titleLabel2.text
 
     signal clicked
     signal pressAndHold
 
-    property var backgroundColor: MatsyaUI.Theme.darkMode ? Qt.rgba(255, 255, 255, 0.1)
+   property var backgroundColor: MatsyaUI.Theme.darkMode ? Qt.rgba(255, 255, 255, 0.1)
                                                         : Qt.rgba(0, 0, 0, 0.05)
     property var hoverColor: MatsyaUI.Theme.darkMode ? Qt.rgba(255, 255, 255, 0.15)
                                                    : Qt.rgba(0, 0, 0, 0.1)
@@ -60,23 +61,33 @@ Item {
             control.pressAndHold()
         }
     }
-
-    ColumnLayout {
-        anchors.fill: parent
-        anchors.leftMargin: MatsyaUI.Theme.smallRadius
-        anchors.rightMargin: MatsyaUI.Theme.smallRadius
-        spacing: MatsyaUI.Units.largeSpacing
-
+    Label {
+        id: _titleLabel2
+        leftPadding: MatsyaUI.Units.largeSpacing
+        font.bold: true
+        topPadding: 2
+        font.pointSize: 10
+        Layout.fillWidth: true
+    }
+  //  ColumnLayout {
+    //    anchors.fill: parent
+      //  anchors.leftMargin: MatsyaUI.Theme.smallRadius
+       // anchors.rightMargin: MatsyaUI.Theme.smallRadius
+       // spacing: MatsyaUI.Units.largeSpacing
+    RowLayout {
+       // anchors.rightMargin: MatsyaUI.Units.largeSpacing
+        //anchors.leftMargin: MatsyaUI.Theme.smallRadius
+        //anchors.rightMargin: MatsyaUI.Theme.smallRadius
+        //spacing: MatsyaUI.Units.largeSpacing
         Item {
             Layout.fillHeight: true
         }
 
         Item {
-            id: imageItem
-            Layout.preferredWidth: 28 + MatsyaUI.Units.largeSpacing * 2
-            Layout.preferredHeight: 28 + MatsyaUI.Units.largeSpacing * 2
+            Layout.preferredWidth: 12 + MatsyaUI.Units.largeSpacing * 2
+            Layout.preferredHeight: 12 + MatsyaUI.Units.largeSpacing * 2
 
-            Layout.alignment: Qt.AlignHCenter
+            Layout.alignment: Qt.AlignLeft
 
             Behavior on scale {
                 NumberAnimation {
@@ -108,32 +119,32 @@ Item {
                     }
                 }
             }
-
             Image {
                 id: _image
-                Layout.preferredWidth: 28
-                Layout.preferredHeight: 28
+                Layout.preferredWidth: 22
+                Layout.preferredHeight: 22
+                Layout.alignment: Qt.AlignVCenter+Qt.AlignLeft
                 anchors.centerIn: parent
-                sourceSize: Qt.size(28, 28)
+                sourceSize: Qt.size(22, 22)
                 asynchronous: true
                 antialiasing: true
                 smooth: true
             }
         }
-
         Label {
             id: _titleLabel
-//            color: control.checked ? MatsyaUI.Theme.highlightedTextColor : MatsyaUI.Theme.textColor
-            Layout.preferredHeight: control.height * 0.15
-            Layout.alignment: Qt.AlignHCenter
-            horizontalAlignment: Qt.AlignHCenter
-            Layout.fillWidth: true
-            elide: Text.ElideMiddle
+    //            color: control.checked ? MatsyaUI.Theme.highlightedTextColor : MatsyaUI.Theme.textColor
+            Layout.preferredHeight:1
+            Layout.alignment:Qt.AlignLeft
+            topPadding: 20
+            font.pointSize: 8
+            // horizontalAlignment: Qt.AlignHCenter
+            //Layout.fillWidth: true
+            //elide: Text.ElideMiddle
             visible: text
         }
-
         Item {
             Layout.fillHeight: true
         }
-    }
 }
+    }

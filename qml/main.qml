@@ -1,7 +1,7 @@
 /*
  * Copyright (C) 2021 MatsyaOS Team.
  *
- * Author:     Reion Wong <aj@matsyaos.com>
+ * Author:
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -67,7 +67,7 @@ Item {
 
         onNewColor: {
             background.color = color
-            rootItem.darkMode = darkMode
+            rootItem.darkMode = darkMode //lightness < 128 ? true : false
         }
     }
 
@@ -129,18 +129,35 @@ Item {
                 anchors.leftMargin: MatsyaUI.Units.smallSpacing
                 anchors.rightMargin: MatsyaUI.Units.smallSpacing
                 spacing: MatsyaUI.Units.smallSpacing
+                StandardItem {
+                           id: shutdownItem
 
-                Image {
-                    id: acticityIcon
-                    width: rootItem.iconSize
-                    height: rootItem.iconSize
-                    sourceSize: Qt.size(rootItem.iconSize,
-                                        rootItem.iconSize)
-                    source: acticity.icon ? "image://icontheme/" + acticity.icon : ""
-                    visible: status === Image.Ready
-                    antialiasing: true
-                    smooth: false
-                }
+                           animationEnabled: true
+                           Layout.fillHeight: true
+                           Layout.preferredWidth: shutdownIcon.implicitWidth + MatsyaUI.Units.smallSpacing
+                           //checked: shutdownDialog.item.visible
+
+                           onClicked: {
+                               if (mouse.button === Qt.RightButton)
+                                   acticityMenu.open()
+
+                               else process.startDetached("matsya-launcher")
+                           }
+
+                           Image {
+                               id: shutdownIcon
+                               anchors.centerIn: parent
+                               width: 50*0.4
+                               height: 50*0.4
+                               sourceSize: Qt.size(width, height)
+                               source: acticity.icon ? "image://icontheme/" + acticity.icon : "qrc:/images/" + (rootItem.darkMode ? "dark/" : "light/") + "activities.svg"
+                               asynchronous: true
+                               antialiasing: true
+                               smooth: false
+                           }
+                       }
+
+
 
                 Label {
                     id: acticityLabel
@@ -252,18 +269,84 @@ Item {
 
         // System tray(Right)
         SystemTray {}
-
         StandardItem {
-            id: controler
-
-            checked: controlCenter.item.visible
+            checked: bluetoothDialog.item.visible
             animationEnabled: true
             Layout.fillHeight: true
-            Layout.preferredWidth: _controlerLayout.implicitWidth + MatsyaUI.Units.largeSpacing
+            Layout.preferredWidth: controlENter.implicitWidth + MatsyaUI.Units.largeSpacing
 
             onClicked: {
                 toggleDialog()
             }
+
+            function toggleDialog() {
+                if (bluetoothDialog.item.visible)
+                    bluetoothDialog.item.close()
+                else {
+                    // 先初始化，用户可能会通过Alt鼠标左键移动位置
+
+                        bluetoothDialog.item.position = Qt.point(0, 0)
+                        bluetoothDialog.item.position = mapToGlobal(0, 0)
+                        bluetoothDialog.item.open()
+
+                }
+            }            Image {
+                id: controlENter
+                anchors.centerIn: parent
+                width: rootItem.iconSize
+                height: width
+                sourceSize: Qt.size(width, height)
+                source: "qrc:/images/" + (rootItem.darkMode ? "dark/" : "light/") + "bluetooth" +".svg"
+                asynchronous: true
+                antialiasing: true
+                smooth: false
+            }
+        }
+        StandardItem {
+            checked: mprisDialog.item.visible
+            animationEnabled: true
+            Layout.fillHeight: true
+            Layout.preferredWidth: controlENter.implicitWidth + MatsyaUI.Units.largeSpacing
+
+            onClicked: {
+                toggleDialog()
+            }
+
+            function toggleDialog() {
+                if (mprisDialog.item.visible)
+                    mprisDialog.item.close()
+                else {
+                    // 先初始化，用户可能会通过Alt鼠标左键移动位置
+
+                        mprisDialog.item.position = Qt.point(0, 0)
+                        mprisDialog.item.position = mapToGlobal(0, 0)
+                        mprisDialog.item.open()
+
+                }
+            }            Image {
+                id: mprisd
+                anchors.centerIn: parent
+                width: rootItem.iconSize
+                height: width
+                sourceSize: Qt.size(width, height)
+                source: "qrc:/images/" + (rootItem.darkMode ? "dark/" : "light/") + controlCenter.item.volumeIconName + ".svg"
+                asynchronous: true
+                antialiasing: true
+                smooth: true
+            }
+        }
+
+        StandardItem {
+            id: controler
+
+       //   checked: controlCenter.item.visible
+            animationEnabled: true
+            Layout.fillHeight: true
+            Layout.preferredWidth: _controlerLayout.implicitWidth + MatsyaUI.Units.largeSpacing
+
+        //  onClicked: {
+          //    toggleDialog()
+          //}
 
             function toggleDialog() {
                 if (controlCenter.item.visible)
@@ -284,18 +367,8 @@ Item {
 
                 spacing: MatsyaUI.Units.largeSpacing
 
-                Image {
-                    id: volumeIcon
-                    visible: controlCenter.item.defaultSink
-                    source: "qrc:/images/" + (rootItem.darkMode ? "dark/" : "light/") + controlCenter.item.volumeIconName + ".svg"
-                    width: rootItem.iconSize
-                    height: width
-                    sourceSize: Qt.size(width, height)
-                    asynchronous: true
-                    Layout.alignment: Qt.AlignCenter
-                    antialiasing: true
-                    smooth: false
-                }
+
+
 
                 Image {
                     id: wirelessIcon
@@ -312,11 +385,15 @@ Item {
                     antialiasing: true
                     smooth: false
                 }
-
-                // Battery Item
+               // Battery Item
                 RowLayout {
                     visible: battery.available
-
+                    Label {
+                        text: battery.chargePercent + "%"
+                        font.pointSize: rootItem.fontSize
+                        color: rootItem.textColor
+                        visible: battery.showPercentage
+                    }
                     Image {
                         id: batteryIcon
                         height: rootItem.iconSize
@@ -328,42 +405,76 @@ Item {
                         smooth: false
                     }
 
-                    Label {
+                   /* Label {
                         text: battery.chargePercent + "%"
                         font.pointSize: rootItem.fontSize
                         color: rootItem.textColor
                         visible: battery.showPercentage
-                    }
+                    }*/
                 }
             }
         }
 
         StandardItem {
-            id: shutdownItem
-
+            checked: controlCenter.item.visible
             animationEnabled: true
             Layout.fillHeight: true
-            Layout.preferredWidth: shutdownIcon.implicitWidth + MatsyaUI.Units.smallSpacing
-            checked: shutdownDialog.item.visible
+            Layout.preferredWidth: controlENter.implicitWidth + MatsyaUI.Units.largeSpacing
 
             onClicked: {
-                shutdownDialog.item.position = Qt.point(0, 0)
-                shutdownDialog.item.position = mapToGlobal(0, 0)
-                shutdownDialog.item.open()
+                toggleDialog()
             }
 
-            Image {
-                id: shutdownIcon
+            function toggleDialog() {
+                if (controlCenter.item.visible)
+                    controlCenter.item.close()
+                else {
+                    // 先初始化，用户可能会通过Alt鼠标左键移动位置
+                    controlCenter.item.position = Qt.point(0, 0)
+                    controlCenter.item.position = mapToGlobal(0, 0)
+                    controlCenter.item.open()
+                }
+            }            Image {
                 anchors.centerIn: parent
                 width: rootItem.iconSize
                 height: width
                 sourceSize: Qt.size(width, height)
-                source: "qrc:/images/" + (rootItem.darkMode ? "dark/" : "light/") + "system-shutdown-symbolic.svg"
+                source: "qrc:/images/" + (rootItem.darkMode ? "dark/" : "light/")+ (controlCenter.item.visible ? "ccon.svg":"ccoff.svg")
                 asynchronous: true
                 antialiasing: true
                 smooth: false
             }
         }
+/*
+
+ StandardItem {
+            id: siriItem
+
+    animationEnabled: true
+    Layout.fillHeight: true
+    Layout.preferredWidth: siriIcon.implicitWidth + MatsyaUI.Units.smallSpacing
+checked: bluetoothDialog.item.visible
+
+    onClicked: {
+            shutdownDialog.item.position = Qt.point(0, 0)
+            shutdownDialog.item.position = mapToGlobal(0, 0)
+            shutdownDialog.item.open()
+        }
+
+
+
+    Image {
+        id: siriIcon
+                anchors.centerIn: parent
+                width: rootItem.iconSize
+                height: width
+                sourceSize: Qt.size(width, height)
+                source: "qrc:/images/" + (rootItem.darkMode ? "dark/" : "light/") + "siri.svg"
+                asynchronous: true
+                antialiasing: true
+                smooth: false
+            }
+            }*/
 
         // Pop-up notification center and calendar
         StandardItem {
@@ -381,16 +492,16 @@ Item {
                 id: _dateTimeLayout
                 anchors.fill: parent
 
-//                Image {
-//                    width: rootItem.iconSize
-//                    height: width
-//                    sourceSize: Qt.size(width, height)
-//                    source: "qrc:/images/" + (rootItem.darkMode ? "dark/" : "light/") + "notification-symbolic.svg"
-//                    asynchronous: true
-//                    Layout.alignment: Qt.AlignCenter
-//                    antialiasing: true
-//                    smooth: false
-//                }
+                Image {
+                    width: rootItem.iconSize
+                    height: width
+                    sourceSize: Qt.size(width, height)
+                    source: "qrc:/images/" + (rootItem.darkMode ? "dark/" : "light/") + "notification-symbolic.svg"
+                    asynchronous: true
+                    Layout.alignment: Qt.AlignCenter
+                    antialiasing: true
+                    smooth: false
+                }
 
                 Label {
                     id: timeLabel
@@ -405,8 +516,10 @@ Item {
                         running: true
                         triggeredOnStart: true
                         onTriggered: {
-                            timeLabel.text = new Date().toLocaleTimeString(Qt.locale(), StatusBar.twentyFourTime ? rootItem.timeFormat
-                                                                                                                 : Locale.ShortFormat)
+                     timeLabel.text =new Date().toLocaleDateString(Qt.locale(),"ddd MMM d")+" "+ new Date() .toLocaleTimeString(Qt.locale(), StatusBar.twentyFourTime ? rootItem.timeFormat
+                                                                                                                           : Locale.ShortFormat)
+               //             timeLabel.text = new Date() .toLocaleTimeString(Qt.locale(), StatusBar.twentyFourTime ? rootItem.timeFormat
+                 //                                                      : Locale.ShortFormat)
                         }
                     }
                 }
@@ -468,9 +581,14 @@ Item {
     }
 
     Loader {
-        id: shutdownDialog
-        sourceComponent: ShutdownDialog {}
+        id: bluetoothDialog
+        sourceComponent: BluetoothDialog {}
         asynchronous: true
+    }
+    Loader{
+    id:mprisDialog
+    sourceComponent: VolDiaglog {}
+    asynchronous: true
     }
 
     NM.ActiveConnection {

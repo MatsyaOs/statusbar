@@ -1,0 +1,10 @@
+/run/media/tokyo/DATA/Documents/final/statusbar/build/CMakeFiles/KF5WindowSystem_QCH.dir
+/run/media/tokyo/DATA/Documents/final/statusbar/build/CMakeFiles/matsya-statusbar.dir
+/run/media/tokyo/DATA/Documents/final/statusbar/build/CMakeFiles/translations.dir
+/run/media/tokyo/DATA/Documents/final/statusbar/build/CMakeFiles/edit_cache.dir
+/run/media/tokyo/DATA/Documents/final/statusbar/build/CMakeFiles/rebuild_cache.dir
+/run/media/tokyo/DATA/Documents/final/statusbar/build/CMakeFiles/list_install_components.dir
+/run/media/tokyo/DATA/Documents/final/statusbar/build/CMakeFiles/install.dir
+/run/media/tokyo/DATA/Documents/final/statusbar/build/CMakeFiles/install/local.dir
+/run/media/tokyo/DATA/Documents/final/statusbar/build/CMakeFiles/install/strip.dir
+/run/media/tokyo/DATA/Documents/final/statusbar/build/CMakeFiles/matsya-statusbar_autogen.dir
